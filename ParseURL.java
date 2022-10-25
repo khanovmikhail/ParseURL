@@ -8,11 +8,13 @@ public class ParseURL {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String url = reader.readLine();
-        //напишите тут ваш код
+        //Read an url from InputStream
 
+        //Cut url string to arguments and saves it's to String[] array
         url = url.replaceFirst("\\S*\\?", "");
         String[] arguments = url.split("&");
 
+        //Print argument names and saves value if arg name is "obj"
         String obj = null;
         for (String str: arguments) {
             String s = str.replaceFirst("\\=\\S*", "");
@@ -21,8 +23,8 @@ public class ParseURL {
                 obj = str.replaceFirst("\\S*\\=", "");
             }
         }
+        //If obj argument exist print it
         if (obj != null) {
-
             try {
                 double d = Double.parseDouble(obj);
                 alert(d);
@@ -30,7 +32,6 @@ public class ParseURL {
                 alert(obj);
             }
         }
-
     }
 
     public static void alert(double value) {
